@@ -66,40 +66,68 @@ var john = Object.create(personProto);
 
 //primitives
 
-var a = 23;
-var b = a;
+// var a = 23;
+// var b = a;
 
-a = 46;
+// a = 46;
 
-console.log(a);
-console.log(b);
+// console.log(a);
+// console.log(b);
 
-//objects
+// //objects
 
-var obj1 = {
-    name: 'John',
-    age: 26
-};
+// var obj1 = {
+//     name: 'John',
+//     age: 26
+// };
 
-var obj2 = obj1;
-obj1.age = 35; 
+// var obj2 = obj1;
+// obj1.age = 35; 
 
-console.log(obj1.age);
-console.log(obj2.age);
+// console.log(obj1.age);
+// console.log(obj2.age);
 
-//functions
+// //functions
 
-var age = 27;
-var obj = {
-    names: "Jonas",
-    city: "Lisbon"
-};
+// var age = 27;
+// var obj = {
+//     names: "Jonas",
+//     city: "Lisbon"
+// };
 
-function change(a, b) {
-    a = 30;
-    b.city = 'San Francisco';
+// function change(a, b) {
+//     a = 30;
+//     b.city = 'San Francisco';
+// }
+
+// change(age, obj);
+// console.log(age);
+// console.log(obj.city);
+
+
+//passing functions as arguments
+
+var years = [1990, 1965,1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
 }
 
-change(age, obj);
-console.log(age);
-console.log(obj.city);
+function calculateAge(el) {
+    return 2019 - el;
+}
+
+function isFullAge(el) {
+    return el >= 18;
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullAges = arrayCalc(ages, isFullAge);
+
+
+console.log(ages);
+console.log(isFullAge);
