@@ -107,27 +107,52 @@ var john = Object.create(personProto);
 
 //passing functions as arguments
 
-var years = [1990, 1965,1937, 2005, 1998];
+// var years = [1990, 1965,1937, 2005, 1998];
 
-function arrayCalc(arr, fn) {
-    var arrRes = [];
-    for (var i = 0; i < arr.length; i++) {
-        arrRes.push(fn(arr[i]));
+// function arrayCalc(arr, fn) {
+//     var arrRes = [];
+//     for (var i = 0; i < arr.length; i++) {
+//         arrRes.push(fn(arr[i]));
+//     }
+//     return arrRes;
+// }
+
+// function calculateAge(el) {
+//     return 2019 - el;
+// }
+
+// function isFullAge(el) {
+//     return el >= 18;
+// }
+
+// var ages = arrayCalc(years, calculateAge);
+// var fullAges = arrayCalc(ages, isFullAge);
+
+
+// console.log(ages);
+// console.log(isFullAge);
+
+//first class functions 
+
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name){
+            console.log(name + ' , can you please explain what UX desing is?');
+        }
+    }else if (job === 'teacher') {
+        return function(name) {
+            console.log('What subject do you teach, ' + name + '?');
+            }
+
+        }else {
+            return function(name) {
+                console.log('Hello ' + name + ' , what do you do?')
+        }
     }
-    return arrRes;
 }
 
-function calculateAge(el) {
-    return 2019 - el;
-}
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
 
-function isFullAge(el) {
-    return el >= 18;
-}
-
-var ages = arrayCalc(years, calculateAge);
-var fullAges = arrayCalc(ages, isFullAge);
-
-
-console.log(ages);
-console.log(isFullAge);
+teacherQuestion('John');
+designerQuestion('John');
