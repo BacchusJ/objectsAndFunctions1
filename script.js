@@ -56,7 +56,7 @@ var bacchus = Object.create(personProto,
 
 /*two variables holding primitives are actually two different things
 because each varibale has its own value
-this will console log 23 for b and 46 for a because it was changed after*/
+this will console log 23 for b and 46 for a because it was changed after
 
 
 var a = 23;
@@ -67,11 +67,13 @@ a = 46;
 console.log(a);
 console.log(b);
 
-/*now we are doign the same but with 'objects'
+*/
+
+/* ************ now we are doign the same but with 'objects'
 this will console log 30 for both variables 
 becasue the referece points to the first object - it is just
 a reference. unlike the expample above; they do not have 
-their own value*/
+their own value
 
 //objects
 
@@ -84,12 +86,12 @@ var obj2 = obj1;
 obj1.age = 30;
 console.log(obj1.age);
 console.log(obj2.age);
-
-//function
+********************** */
+//function 
 
 /*when we pass a primitive to a function, only a copy is created
 but when we pass an object; we do NOT pass the object but only the 
-reference*/
+reference
 
 var age = 27;
 var obj = {
@@ -105,3 +107,30 @@ change(age, obj);
 console.log(change);
 console.log(age);
 console.log(obj.city);
+
+*/
+
+/*first class functions
+
+functions are also objects, so we can do the 
+same things we can do with objects
+function is an instance of an object type. We can store them in a 
+variable*/
+
+
+var years = [1990, 1965, 1937, 2005, 1998];
+
+function arrayCalc(arr, fn) {
+    var arrRes = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAge(el) {
+    return 2016 - el;
+}
+
+var ages = arrayCalc(years, calculateAge);
+console.log(ages)
