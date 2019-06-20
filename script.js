@@ -117,6 +117,7 @@ same things we can do with objects
 function is an instance of an object type. We can store them in a 
 variable*/
 
+/*
 
 var years = [1990, 1965, 1937, 2005, 1998];
 
@@ -151,3 +152,69 @@ var rates = arrayCalc(ages, maxHeartRate);
 console.log(fullAges);
 console.log(ages);
 console.log(rates);
+
+*/
+
+
+//function returning functions
+
+/*
+
+function interviewQuestions(job){
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you please explain what UX design is?');
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log('What subject do you teach ' + name + '?');
+        }
+    } else {
+        return function(name) {
+            console.log('Hello ' + name + ' what do you do?');
+        }
+    }
+}
+
+var teacherQuestion = interviewQuestions('teacher');
+var designerQuestion = interviewQuestions('designer')
+teacherQuestion('John');
+designerQuestion('Bacchus');
+*/
+
+// IIFE immediately invoked functions
+
+// function retirement(retirementAge) {
+//     var a = ' years left until retirement';
+//     return function(yearOfBirth) {
+//         var age = 2019 - yearOfBirth;
+//         console.log((retirementAge - age) + a)
+//     }
+// }
+
+// var retirementUS = retirement(66);
+// retirementUS(1977);
+
+// var retirementCanada = retirement(65);
+// retirementCanada(1977);
+
+// var retirementFrance = retirement(67);
+// retirementFrance(1977);
+
+
+
+function interviewQuestion(job) {
+    return function(name) {
+        if (job === 'designer') {
+            console.log(name + ' , can you please explain what UX design is');
+
+        }else if (job === 'xfinity') {
+            console.log (name + ', can you tell me what you do for xfinity')
+        }else {
+            console.log('Hello and welcome' + name + 'tell me what you do for a living');
+
+        }
+    }
+}
+
+interviewQuestion('xfinity')('Danny');
