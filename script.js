@@ -201,7 +201,7 @@ designerQuestion('Bacchus');
 // var retirementFrance = retirement(67);
 // retirementFrance(1977);
 
-
+/*
 
 function interviewQuestion(job) {
     return function(name) {
@@ -209,7 +209,7 @@ function interviewQuestion(job) {
             console.log(name + ' , can you please explain what UX design is');
 
         }else if (job === 'xfinity') {
-            console.log (name + ', can you tell me what you do for xfinity')
+            console.log (name + ', can you tell me what you do for xfinity?')
         }else {
             console.log('Hello and welcome' + name + 'tell me what you do for a living');
 
@@ -218,3 +218,76 @@ function interviewQuestion(job) {
 }
 
 interviewQuestion('xfinity')('Danny');
+*/
+
+//bind call and apply methods 
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'Teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good' + timeOfDay + ', Ladies and gentlemen! I\'m ' + this.name + 
+            ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        }else if (style === 'friendly') {
+            console.log('Hey! What\'s up?, I\'m ' + this.name + 
+            ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay);
+        }
+    }
+};
+
+var julie = {
+    name: 'Juliana Mai',
+    age: 31,
+    job: 'web developer'
+}
+
+var danny = {
+    name:'Felipe',
+    age: 38,
+    job: 'xfinity technician'
+}
+
+var bacchus = {
+    name: 'Bacchus',
+    age: 40,
+    job: 'glass engraver'
+
+}
+
+var kah = {
+    name: 'Kah',
+    age: 35,
+    job: 'driver'
+}
+
+john.presentation('formal', 'morning');
+john.presentation('friendly', 'afternoon')
+
+john.presentation.call(julie, 'friendly', 'evening');
+john.presentation.call(danny, 'friendly', 'night');
+
+john.presentation.call(bacchus, 'formal', 'morning');
+john.presentation.call(bacchus, 'friendly', 'evening');
+
+
+//apply method accepts the argument as an array 
+
+// john.presentation.apply(emily, ['friendly', 'afternoon'])
+
+//bind method is similar to call method also but bind does not immediatly call 
+//the function but makes a copy with pre-set arugments - we are going to 
+//pre-set the friendlty argument - pay attention
+
+var kahFriendly = john.presentation.bind(kah, 'friendly', 'morning');
+
+// kahFriendly('morning');
+kahFriendly("evening");
+
+
+
+
+
+
+
